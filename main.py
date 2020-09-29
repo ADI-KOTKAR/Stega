@@ -1,8 +1,8 @@
 from flask import Flask, render_template
-from Image.image import image
-from Audio.audio import audio
-from Text.text import text
-from Video.video import video
+from modes.Image.image import image
+from modes.Audio.audio import audio
+from modes.Text.text import text
+from modes.Video.video import video
 
 app = Flask(__name__)
 app.register_blueprint(image, url_prefix="/image")
