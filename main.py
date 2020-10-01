@@ -1,10 +1,16 @@
+import os
 from flask import Flask, render_template
 from modes.Image.image import image
 from modes.Audio.audio import audio
 from modes.Text.text import text
 from modes.Video.video import video
 
+UPLOAD_IMAGE_FOLDER = 'modes\\Image\\static'
+# ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+
 app = Flask(__name__)
+app.secret_key = "hello"
+app.config['UPLOAD_IMAGE_FOLDER'] = UPLOAD_IMAGE_FOLDER
 app.register_blueprint(image, url_prefix="/image")
 app.register_blueprint(audio, url_prefix="/audio")
 app.register_blueprint(text, url_prefix="/text")
