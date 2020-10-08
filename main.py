@@ -5,6 +5,7 @@ from modes.Audio.audio import audio
 from modes.Text.text import text
 from modes.Video.video import video
 
+
 UPLOAD_IMAGE_FOLDER = 'modes\\Image\\static'
 # ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 

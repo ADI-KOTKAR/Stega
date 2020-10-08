@@ -2,12 +2,35 @@
 {% block title %} STEGA | Image-Encode {% endblock %}
 {% block content %}
     <div class="container mx-5 my-5">
-        <h1 class="lead">Encode Result</h1>
+        <h1>Encode Result</h1>
+
         {% for key, value in result.items() %}
-               <p> {{ key }} </p>
-               <p> {{ value }} </p>
+               <!-- <p> {{ key }} </p> -->
+               {% if value %}
+                    <p> {{ value }}</p>
+                {% else %}
+                    <p> No message selected </p>
+                {% endif %}
         {% endfor %}
-        <img src="static/{{ file.filename }}" />
+
+        {% if file %}
+            <img src="static/{{ file.filename }}" style="width:100px; height:100px" />
+        {% else %}
+            <p> No image selected</p>
+        {% endif %}
+
+        {% if encryption %}
+            <div class="col">
+                <img class="row" src="static/encrypted_image.png" style="width:100px; height:100px"/>
+                <a class="btn btn-primary row" href="static/encrypted_image.png" download>Download</a>
+            </div>
+        {% else %}
+            <p> No </p>
+        {% endif %}
+
+        <div>
+            <a class="btn btn-primary my-3" href="/image/encode">done</a>
+        </div>
     </div>
-    <a href="/image/encode">done</a>
+    
 {% endblock %}
