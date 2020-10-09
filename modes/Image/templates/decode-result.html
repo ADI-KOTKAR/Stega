@@ -1,0 +1,36 @@
+{% extends 'image.html' %}
+{% block title %} STEGA | Image-Decode {% endblock %}
+{% block content %}
+    <div class="container mx-5 my-5">
+        <h1>Decode Result</h1>
+
+        {% for key, value in result.items() %}
+               <!-- <p> {{ key }} </p> -->
+               {% if value %}
+                    <p> {{ value }}</p>
+                {% else %}
+                    <p> No message selected </p>
+                {% endif %}
+        {% endfor %}
+
+        {% if file %}
+            <img src="static/{{ file.filename }}" style="width:100px; height:100px" />
+        {% else %}
+            <p> No image selected</p>
+        {% endif %}
+
+        {% if decryption %}
+            <div class="col">
+                <img class="row" src="static/decrypted_secret.png" style="width:100px; height:100px"/>
+                <a class="btn btn-primary row" href="static/decrypted_secret.png" download>Download</a>
+            </div>
+        {% else %}
+            <p> No </p>
+        {% endif %}
+
+        <div>
+            <a class="btn btn-primary my-3" href="/">done</a>
+        </div>
+    </div>
+    
+{% endblock %}

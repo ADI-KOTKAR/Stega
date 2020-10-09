@@ -38,6 +38,27 @@ def image_encode_result():
 def image_decode():
     return render_template("decode-image.html")
 
+@image.route("/decode-result", methods = ['POST', 'GET'])
+def image_decode_result():
+    if request.method == 'POST':
+      if 'file' not in request.files:
+            flash('No file part')
+            # return redirect(request.url)
+      file = request.files['image']
+      if file.filename == '':
+            flash('No selected file')
+            # return redirect(request.url)
+
+      if file:
+        filename = secure_filename(file.filename)
+        file.save(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], filename))
+        decryption = True
+        decrypt(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], filename))
+      else:
+        decryption = False
+      result = request.form
+      return render_template("decode-result.html", result = result, file=file, decryption=decryption)
+
 # Encryption function 
 def encrypt(image_1): 
     
@@ -69,10 +90,10 @@ def encrypt(image_1):
 
     
 # Decryption function 
-def decrypt(): 
+def decrypt(image_1): 
     
     # Encrypted image 
-    img = cv2.imread(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], "encrypted_image.png")) 
+    img = cv2.imread(image_1) 
     width = img.shape[0] 
     height = img.shape[1] 
     
