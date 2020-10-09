@@ -4,28 +4,33 @@
     <div class="container mx-5 my-5">
         <h1>Encode Result</h1>
 
-        {% for key, value in result.items() %}
-               <!-- <p> {{ key }} </p> -->
+        <!-- {% for key, value in result.items() %}
                {% if value %}
                     <p> {{ value }}</p>
                 {% else %}
                     <p> No message selected </p>
                 {% endif %}
-        {% endfor %}
+        {% endfor %} -->
 
         {% if file %}
+            <p>Your image:</p>
             <img src="static/{{ file.filename }}" style="width:100px; height:100px" />
+            <br>
         {% else %}
             <p> No image selected</p>
+            <br>
         {% endif %}
 
         {% if encryption %}
+            <p>Your encrypted image:</p>
             <div class="col">
-                <img class="row" src="static/encrypted_image.png" style="width:100px; height:100px"/>
-                <a class="btn btn-primary row" href="static/encrypted_image.png" download>Download</a>
+                <img class="row mb-1" src="static/encrypted_image.png" style="width:100px; height:100px"/>
+                <a class="btn btn-dark btn-sm row" href="static/encrypted_image.png" download>Download</a>
             </div>
+            <br>
         {% else %}
             <p> No </p>
+            <br>
         {% endif %}
 
         <div>

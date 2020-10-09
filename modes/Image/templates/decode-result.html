@@ -20,13 +20,15 @@
         {% endif %}
 
         {% if decryption %}
+            <p cla>Your image is Ready!</p>
             <div class="col">
                 <!-- <img class="row" src="static/decrypted_secret.png" style="width:100px; height:100px"/> -->
-                <p>Your image is Ready!</p>
-                <a class="btn btn-primary row" href="static/decrypted_secret.png" download>Download</a>
+                <a class="btn btn-dark btn-sm row" href="static/decrypted_secret.png" download>Download</a>
             </div>
+            <br>
         {% else %}
             <p> No </p>
+            <br>
         {% endif %}
 
         <div>
