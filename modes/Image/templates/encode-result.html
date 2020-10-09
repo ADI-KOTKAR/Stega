@@ -12,29 +12,37 @@
                 {% endif %}
         {% endfor %} -->
 
-        {% if file %}
-            <p>Your image:</p>
-            <img src="static/{{ file.filename }}" style="width:100px; height:100px" />
-            <br>
-        {% else %}
-            <p> No image selected</p>
-            <br>
-        {% endif %}
-
-        {% if encryption %}
-            <p>Your encrypted image:</p>
-            <div class="col">
-                <img class="row mb-1" src="static/encrypted_image.png" style="width:100px; height:100px"/>
-                <a class="btn btn-dark btn-sm row" href="static/encrypted_image.png" download>Download</a>
+        <div class="card bg-light">
+            <div class="container-fluid">
+                {% if file %}
+                    <h5 class="my-3">
+                        Your image:
+                    </h5>
+                    <img src="static/{{ file.filename }}" style="width:100px; height:100px" />
+                    <br>
+                {% else %}
+                    <p> No image selected</p>
+                    <br>
+                {% endif %}
+                    <hr>
+                {% if encryption %}
+                    <h5 class="my-3">
+                        Your Encrypted image:
+                    </h5>
+                    <div class="col">
+                        <img class="row mb-1" src="static/encrypted_image.png" style="width:100px; height:100px"/>
+                        <a class="btn btn-dark btn-sm row" href="static/encrypted_image.png" download>Download</a>
+                    </div>
+                    <br>
+                {% else %}
+                    <p> No </p>
+                    <br>
+                {% endif %}
+                    <hr>
+                <div>
+                    <a class="btn btn-primary my-3" href="/">Done</a>
+                </div>
             </div>
-            <br>
-        {% else %}
-            <p> No </p>
-            <br>
-        {% endif %}
-
-        <div>
-            <a class="btn btn-primary my-3" href="/">done</a>
         </div>
     </div>
     

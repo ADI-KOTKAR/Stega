@@ -3,43 +3,57 @@
 {% block content %}
     <div class="container mx-5 my-5">
         <h1>Encode Result</h1>
+        <div class="card bg-light">
+            <div class="container-fluid">
+                <!-- {% for key, value in result.items() %}
+                    {% if value %}
+                        <p> {{ value }}</p>
+                    {% else %}
+                        <p> No message selected </p>
+                    {% endif %}
+                {% endfor %} -->
 
-        <!-- {% for key, value in result.items() %}
-            {% if value %}
-                <p> {{ value }}</p>
-            {% else %}
-                <p> No message selected </p>
-            {% endif %}
-        {% endfor %} -->
-
-        {% if file %}
-            <img src="static/{{ file.filename }}" style="width:100px; height:100px" />
-        {% else %}
-            <p> No image selected</p>
-        {% endif %}
-
-        {% if message %}
-            <h3 class="my-2">
-                <b>Your Message:</b>
-            </h3>
-            <p>{{ message }}</p>
-        {% else %}
-            <p>No message recorded.</p>
-        {% endif %}
-
-        {% if text_encryption %}
-            <div class="col">
-                <img class="row mb-1" src="static/encrypted_text_image.png" style="width:100px; height:100px"/>
-                <a class="btn btn-dark btn-sm row" href="static/encrypted_text_image.png" download>Download</a>
+                {% if file %}
+                    <h5 class="my-2">
+                        Your Image:
+                    </h5>
+                    <img src="static/{{ file.filename }}" class="mb-2" style="width:100px; height:100px" />
+                {% else %}
+                    <p> No image selected</p>
+                    <br>
+                {% endif %}
+                    <hr>
+                {% if message %}
+                    <h5 class="my-2">
+                        Your Message:
+                    </h5>
+                    <div class="card mb-2">
+                        <div class="card-body">
+                          {{ message }}
+                        </div>
+                    </div>
+                {% else %}
+                    <p>No message recorded.</p>
+                {% endif %}
+                    <hr>
+                {% if text_encryption %}
+                    <h5 class="my-2">
+                        Encrypted Image:
+                    </h5>
+                    <div class="col">
+                        <!-- <img class="row mb-1" src="static/encrypted_text_image.png" style="width:100px; height:100px"/> -->
+                        <a class="btn btn-dark btn-sm row" href="static/encrypted_text_image.png" download>Download</a>
+                    </div>
+                    <br>
+                {% else %}
+                    <p> No </p>
+                    <br>
+                {% endif %}
+                    <hr>
+                <div>
+                    <a class="btn btn-primary my-2" href="/">Done</a>
+                </div>
             </div>
-            <br>
-        {% else %}
-            <p> No </p>
-            <br>
-        {% endif %}
-
-        <div>
-            <a class="btn btn-primary my-3" href="/">done</a>
         </div>
     </div>
     

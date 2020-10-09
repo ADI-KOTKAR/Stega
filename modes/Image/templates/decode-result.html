@@ -4,36 +4,42 @@
     <div class="container mx-5 my-5">
         <h1>Decode Result</h1>
 
-        {% for key, value in result.items() %}
-               <!-- <p> {{ key }} </p> -->
+        <!-- {% for key, value in result.items() %}
                {% if value %}
                     <p> {{ value }}</p>
                 {% else %}
                     <p> No message selected </p>
                 {% endif %}
-        {% endfor %}
+        {% endfor %} -->
+        
+        <div class="card bg-light">
+            <div class="container-fluid">
+                {% if file %}
+                    <!-- <img src="static/{{ file.filename }}" style="width:100px; height:100px" /> -->
+                {% else %}
+                    <p> No image selected</p>
+                    <hr>
+                {% endif %}
 
-        {% if file %}
-            <!-- <img src="static/{{ file.filename }}" style="width:100px; height:100px" /> -->
-        {% else %}
-            <p> No image selected</p>
-        {% endif %}
-
-        {% if decryption %}
-            <p>Your image is Ready!</p>
-            <div class="col">
-                <!-- <img class="row" src="static/decrypted_secret.png" style="width:100px; height:100px"/> -->
-                <a class="btn btn-dark btn-sm row" href="static/decrypted_secret.png" download>Download</a>
+                {% if decryption %}
+                    <h5 class="my-3">Your secret Image:</h5>
+                    <div class="col">
+                        <!-- <img class="row" src="static/decrypted_secret.png" style="width:100px; height:100px"/> -->
+                        <a class="btn btn-dark btn-sm row" href="static/decrypted_secret.png" download>Download</a>
+                    </div>
+                    <br>
+                {% else %}
+                    <p> No </p>
+                    <br>
+                {% endif %}
+                    <hr>
+                <div>
+                    <a class="btn btn-primary my-3" href="/">done</a>
+                </div>
             </div>
-            <br>
-        {% else %}
-            <p> No </p>
-            <br>
-        {% endif %}
-
-        <div>
-            <a class="btn btn-primary my-3" href="/">done</a>
         </div>
+
+        
     </div>
     
 {% endblock %}
