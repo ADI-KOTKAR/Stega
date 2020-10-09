@@ -4,3 +4,7 @@ modes/Audio/__pycache__
 modes/Text/__pycache__
 modes/Video/__pycache__
 
+# Uploaded files
+modes/Image/static
+!modes/Image/static/sample.jpg
+
