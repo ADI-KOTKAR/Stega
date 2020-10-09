@@ -1,5 +1,22 @@
 {% extends 'text.html' %}
 {% block title %} STEGA | Text-Encode {% endblock %}
 {% block content %}
-    <h3>Encode</h3>
+    <div class="jumbotron jumbotron-fluid mx-5 my-5 rounded-lg">
+        <div class="container">
+            <h1 class="display-4 text-monospace">Encode</h1>
+            <hr>
+            <!--Form start-->
+            <form action="/text/encode-result" method="POST" enctype = "multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">📃 Write your secret message:</label>
+                    <textarea class="form-control" rows="5" name="message" required></textarea>
+                    <br>
+                    <label for="exampleFormControlFile1">🖼️ Choose your secret Image file:</label>
+                    <input type="file" name="image" accept="image/*" class="form-control-file" id="exampleFormControlFile1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <!--Form end-->
+        </div>
+    </div>
 {% endblock %}

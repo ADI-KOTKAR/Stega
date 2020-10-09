@@ -1,0 +1,41 @@
+{% extends 'text.html' %}
+{% block title %} STEGA | Text-Encode {% endblock %}
+{% block content %}
+    <div class="container mx-5 my-5">
+        <h1>Encode Result</h1>
+
+        <!-- {% for key, value in result.items() %}
+            {% if value %}
+                <p> {{ value }}</p>
+            {% else %}
+                <p> No message selected </p>
+            {% endif %}
+        {% endfor %} -->
+
+        {% if file %}
+            <img src="static/{{ file.filename }}" style="width:100px; height:100px" />
+        {% else %}
+            <p> No image selected</p>
+        {% endif %}
+
+        {% if message %}
+            <p>{{ message }}</p>
+        {% else %}
+            <p>No message recorded.</p>
+        {% endif %}
+
+        {% if text_encryption %}
+            <div class="col">
+                <img class="row" src="static/encrypted_text_image.png" style="width:100px; height:100px"/>
+                <a class="btn btn-primary row" href="static/encrypted_text_image.png" download>Download</a>
+            </div>
+        {% else %}
+            <p> No </p>
+        {% endif %}
+
+        <div>
+            <a class="btn btn-primary my-3" href="/">done</a>
+        </div>
+    </div>
+    
+{% endblock %}
