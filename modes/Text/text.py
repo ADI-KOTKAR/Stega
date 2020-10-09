@@ -50,9 +50,33 @@ def text_encode_result():
 def text_decode():
     return render_template("decode-text.html")
 
+@text.route("/decode-result", methods = ['POST', 'GET'])
+def text_decode_result():
+  if request.method == 'POST':
+    if 'file' not in request.files:
+      flash('No image found')
+    file = request.files['image']
+    if file.filename == '':
+      flash('No image selected')
+    if file:
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(current_app.config['UPLOAD_TEXT_FOLDER'], filename))
+      text_decryption = True
+      message = decrypt_text(os.path.join(current_app.config['UPLOAD_TEXT_FOLDER'], filename))
+    else:
+      text_decryption = False
+    result = request.form
+    return render_template("decode-text-result.html", result = result, file=file, text_decryption=text_decryption, message=message)
+
 # Encryption function
 def encrypt_text(image_1, message):
     im = Image.open(image_1)
 
     im1 = stepic.encode(im, bytes(str(message), encoding='utf-8'))
     im1.save(os.path.join(current_app.config['UPLOAD_TEXT_FOLDER'], "encrypted_text_image.png"))
+
+# Decryption function
+def decrypt_text(image_1):
+  im2 = Image.open(image_1)
+  stegoImage = stepic.decode(im2)
+  return stegoImage

@@ -1,5 +1,19 @@
 {% extends 'text.html' %}
 {% block title %} STEGA | Text-Decode {% endblock %}
 {% block content %}
-    <h3>Decode</h3>
+    <div class="jumbotron jumbotron-fluid mx-5 my-5 rounded-lg">
+        <div class="container">
+            <h1 class="display-4 text-monospace">Decode</h1>
+            <hr>
+            <!--Form start-->
+            <form action="/text/decode-result" method="POST" enctype = "multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">🖼️ Choose your encrypted Image file:</label>
+                    <input type="file" name="image" accept="image/*" class="form-control-file" id="exampleFormControlFile1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <!--Form end-->
+        </div>
+    </div>
 {% endblock %}

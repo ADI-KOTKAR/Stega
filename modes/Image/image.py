@@ -35,11 +35,11 @@ def image_encode():
 def image_encode_result():
     if request.method == 'POST':
       if 'file' not in request.files:
-            flash('No file part')
+            flash('No image found')
             # return redirect(request.url)
       file = request.files['image']
       if file.filename == '':
-            flash('No selected file')
+            flash('No selected image')
             # return redirect(request.url)
 
       if file:
@@ -72,11 +72,11 @@ def image_decode():
 def image_decode_result():
     if request.method == 'POST':
       if 'file' not in request.files:
-            flash('No file part')
+            flash('No image found')
             # return redirect(request.url)
       file = request.files['image']
       if file.filename == '':
-            flash('No selected file')
+            flash('No selected image')
             # return redirect(request.url)
 
       if file:

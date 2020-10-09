@@ -1,0 +1,69 @@
+{% extends 'text.html' %}
+{% block title %} STEGA | Text-Decode {% endblock %}
+{% block content %}
+    <div class="container mx-5 my-5">
+        <h1>Decode Result</h1>
+
+        <!-- {% for key, value in result.items() %}
+               {% if value %}
+                    <p> {{ value }}</p>
+                {% else %}
+                    <p> No message selected </p>
+                {% endif %}
+        {% endfor %} -->
+
+        {% if file %}
+            <!-- <img src="static/{{ file.filename }}" style="width:100px; height:100px" /> -->
+        {% else %}
+            <p> No image selected</p>
+        {% endif %}
+
+        {% if text_decryption %}
+            <p>Your secret message: </p>
+            <div>
+                <div >
+                    <button class="btn btn-dark btn-sm" onclick="copyClipboard()">📋 Copy text</button>
+                </div>
+                <div class="card mb-1">
+                    <div class="card-body" id="divClipboard">
+                      {{ message }}
+                    </div>
+                </div>
+            </div>
+            <br>
+        {% else %}
+            <p> No </p>
+            <br>
+        {% endif %}
+
+        <div>
+            <a class="btn btn-primary my-3" href="/">done</a>
+        </div>
+    </div>
+    <script>
+        function copyClipboard() {
+  var elm = document.getElementById("divClipboard");
+  // for Internet Explorer
+
+  if(document.body.createTextRange) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(elm);
+    range.select();
+    document.execCommand("Copy");
+    // alert("Copied div content to clipboard");
+  }
+  else if(window.getSelection) {
+    // other browsers
+
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(elm);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand("Copy");
+    // alert("Copied div content to clipboard");
+  }
+}
+    </script>
+{% endblock %}
+
