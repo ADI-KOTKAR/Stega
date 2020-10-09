@@ -14,14 +14,15 @@
         {% endfor %}
 
         {% if file %}
-            <img src="static/{{ file.filename }}" style="width:100px; height:100px" />
+            <!-- <img src="static/{{ file.filename }}" style="width:100px; height:100px" /> -->
         {% else %}
             <p> No image selected</p>
         {% endif %}
 
         {% if decryption %}
             <div class="col">
-                <img class="row" src="static/decrypted_secret.png" style="width:100px; height:100px"/>
+                <!-- <img class="row" src="static/decrypted_secret.png" style="width:100px; height:100px"/> -->
+                <p>Your image is Ready!</p>
                 <a class="btn btn-primary row" href="static/decrypted_secret.png" download>Download</a>
             </div>
         {% else %}

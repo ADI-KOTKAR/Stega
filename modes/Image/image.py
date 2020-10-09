@@ -2,6 +2,7 @@ import os
 import cv2 
 import numpy as np 
 import random 
+import shutil
 from flask import Blueprint, current_app, render_template, url_for, redirect, request, session, flash
 from datetime import timedelta
 from flask_wtf import FlaskForm
@@ -11,6 +12,23 @@ image = Blueprint("image", __name__, static_folder="static", template_folder="te
 
 @image.route("/encode")
 def image_encode():
+    if os.path.exists(current_app.config['IMAGE_CACHE_FOLDER']):
+      shutil.rmtree(current_app.config['IMAGE_CACHE_FOLDER'], ignore_errors = False)
+    else:
+      print("Not Found")
+
+    if os.path.exists(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], "adjusted_sample.jpg")):
+      # print("Found")
+      os.remove(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], "adjusted_sample.jpg"))
+    else:
+      print("Not found")
+    
+    if os.path.exists(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], "encrypted_image.png")):
+      # print("Found")
+      os.remove(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], "encrypted_image.png"))
+    else:
+      print("Not found")
+
     return render_template("encode-image.html")
 
 @image.route("/encode-result", methods = ['POST', 'GET'])
@@ -36,6 +54,18 @@ def image_encode_result():
 
 @image.route("/decode")
 def image_decode():
+    if os.path.exists(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], "decrypted_sample.png")):
+      # print("Found")
+      os.remove(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], "decrypted_sample.png"))
+    else:
+      print("Not found")
+    
+    if os.path.exists(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], "decrypted_secret.png")):
+      # print("Found")
+      os.remove(os.path.join(current_app.config['UPLOAD_IMAGE_FOLDER'], "decrypted_secret.png"))
+    else:
+      print("Not found")
+
     return render_template("decode-image.html")
 
 @image.route("/decode-result", methods = ['POST', 'GET'])
