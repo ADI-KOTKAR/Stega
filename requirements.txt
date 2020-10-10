@@ -32,3 +32,4 @@ Wave==0.0.2
 Werkzeug==0.16.0
 wincertstore==0.2
 WTForms==2.3.3
+streamlit==0.68.0
