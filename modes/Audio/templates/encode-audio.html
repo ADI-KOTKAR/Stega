@@ -1,5 +1,22 @@
 {% extends 'audio.html' %}
 {% block title %} STEGA | Audio-Encode {% endblock %}
 {% block content %}
-    <h3>Encode</h3>
+    <div class="jumbotron jumbotron-fluid mx-5 my-5 rounded-lg">
+        <div class="container">
+            <h1 class="display-4 text-monospace">Encode</h1>
+            <hr>
+            <!--Form start-->
+            <form action="/audio/encode-result" method="POST" enctype = "multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">📃 Write your secret message:</label>
+                    <textarea class="form-control" rows="5" name="message" required></textarea>
+                    <br>
+                    <label for="exampleFormControlFile1">🎵 Choose your secret Audio file:</label>
+                    <input type="file" name="audio" accept="audio/*" class="form-control-file" id="exampleFormControlFile1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <!--Form end-->
+        </div>
+    </div>
 {% endblock %}

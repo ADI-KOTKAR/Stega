@@ -1,0 +1,76 @@
+{% extends 'audio.html' %}
+{% block title %} STEGA | Audio-Decode {% endblock %}
+{% block content %}
+    <div class="container-fluid mx-5 my-5">
+        <h1>Decode Result</h1>
+        <div class="card bg-light">
+            <div class="container-fluid">
+                <!-- {% for key, value in result.items() %}
+                    {% if value %}
+                            <p> {{ value }}</p>
+                    {% else %}
+                        <p> No message selected </p>
+                    {% endif %}
+                {% endfor %} -->
+
+                {% if file %}
+                    <!-- <img src="static/{{ file.filename }}" style="width:100px; height:100px" /> -->
+                {% else %}
+                    <p> No audio selected</p>
+                {% endif %}
+
+                {% if audio_decryption %}
+                <h5 class="mt-3 mb-3">
+                    Your secret message:
+                </h5>
+                    <div>
+                        <div >
+                            <button class="btn btn-dark btn-sm" onclick="copyClipboard()">📋 Copy text</button>
+                        </div>
+                        <div class="card mb-1">
+                            <div class="card-body" id="divClipboard">
+                            {{ message }}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p> No </p>
+                    <br>
+                {% endif %}
+
+                <div>
+                    <a class="btn btn-primary my-3" href="/">Done</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Copy Text Javascript -->
+    <script>
+        function copyClipboard() {
+        var elm = document.getElementById("divClipboard");
+        // for Internet Explorer
+
+        if(document.body.createTextRange) {
+            var range = document.body.createTextRange();
+            range.moveToElementText(elm);
+            range.select();
+            document.execCommand("Copy");
+            // alert("Copied div content to clipboard");
+        }
+        else if(window.getSelection) {
+            // other browsers
+
+            var selection = window.getSelection();
+            var range = document.createRange();
+            range.selectNodeContents(elm);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand("Copy");
+            // alert("Copied div content to clipboard");
+        }
+        }
+    </script>
+{% endblock %}
+
