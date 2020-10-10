@@ -8,5 +8,6 @@ modes/Video/__pycache__
 modes/Image/static
 !modes/Image/static/sample.jpg
 modes/Text/static
+modes/Audio/static
 
 
