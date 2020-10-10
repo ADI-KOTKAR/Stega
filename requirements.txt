@@ -33,3 +33,4 @@ Werkzeug==0.16.0
 wincertstore==0.2
 WTForms==2.3.3
 streamlit==0.68.0
+gunicorn==20.0.4
