@@ -5,9 +5,10 @@ modes/Text/__pycache__
 modes/Video/__pycache__
 
 # Uploaded files
-modes/Image/static
+modes/Image/static/*
+modes/Text/static/*
+modes/Audio/static/*
 !modes/Image/static/sample.jpg
-modes/Text/static
-modes/Audio/static
-
+!modes/Text/static
+!modes/Audio/static
 
