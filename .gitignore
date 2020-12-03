@@ -17,4 +17,7 @@ modes/Video/static/*
 # env
 CNS
 
+# others
+.vscode
 modes/Video/ffmpeg
+test_files
