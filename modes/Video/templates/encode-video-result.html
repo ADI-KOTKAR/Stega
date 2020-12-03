@@ -1,0 +1,63 @@
+{% extends 'video.html' %}
+{% block title %} STEGA | Video-Encode {% endblock %}
+{% block content %}
+    <div class="container mx-5 my-5">
+        <h1>Encode Result</h1>
+        <div class="card bg-light">
+            <div class="container-fluid">
+                <!-- {% for key, value in result.items() %}
+                    {% if value %}
+                        <p> {{ value }}</p>
+                    {% else %}
+                        <p> No message selected </p>
+                    {% endif %}
+                {% endfor %} -->
+
+                {% if file %}
+                    <h5 class="my-2">
+                        Your Video:
+                    </h5>
+                    <video controls class="mb-2">
+                        <source src="static/{{ file.filename }}" type="video/mp4">
+                    </video>
+                {% else %}
+                    <p> No Video selected</p>
+                    <br>
+                {% endif %}
+                    <hr>
+                {% if message %}
+                    <h5 class="my-2">
+                        Your Message:
+                    </h5>
+                    <div class="card mb-2">
+                        <div class="card-body">
+                          {{ message }}
+                        </div>
+                    </div>
+                {% else %}
+                    <p>No message recorded.</p>
+                {% endif %}
+                    <hr>
+                {% if encryption %}
+                    <h5 class="my-2">
+                        Encrypted Video:
+                    </h5>
+
+                    <div class="col">
+                        <!-- <img class="row mb-1" src="static/encrypted_video_image.png" style="width:100px; height:100px"/> -->
+                        <a class="btn btn-dark btn-sm row" href="static/enc-video.mp4" download>Download</a>
+                    </div>
+                    <br>
+                {% else %}
+                    <p> No </p>
+                    <br>
+                {% endif %}
+                    <hr>
+                <div>
+                    <a class="btn btn-primary my-2" href="/">Done</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

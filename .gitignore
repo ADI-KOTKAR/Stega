@@ -14,3 +14,7 @@ modes/Video/static/*
 !modes/Audio/static
 !modes/Video/static
 
+# env
+CNS
+
+modes/Video/ffmpeg
