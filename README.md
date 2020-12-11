@@ -126,7 +126,7 @@ You can use the sample files for testing in `test_files` folder.
 
 ## License
 
-- Project link: [My_Guard](https://github.com/ADI-KOTKAR/Stega)
+- Project link: [Stega](https://github.com/ADI-KOTKAR/Stega)
 - [License](https://github.com/ADI-KOTKAR/Stega/blob/master/LICENSE)
 
 
