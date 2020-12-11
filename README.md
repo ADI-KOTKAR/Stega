@@ -66,7 +66,7 @@ git clone https://github.com/ADI-KOTKAR/Stega.git
 Install Python 3 in your system. [click here](https://www.python.org/downloads/)
 
 #### Create a Virtual Environment.
-- Create a Virtual Environment using Anaconda Navigator with Python version 3.7+ 
+- Create a Virtual Environment using **Anaconda Navigator** with Python version 3.7+ 
 - Open Terminal with the activated environment.
 
 #### Installing Dependencies in Virtual Environment
@@ -115,18 +115,18 @@ Make sure environment is activated, Now run:
 ```
 python main.py
 ```
-Open the localhost link - [http://127.0.0.1:5000/](http://127.0.0.1:5000/) , this will open the App on your browser.
+Open the localhost link - [http://127.0.0.1:5000/](http://127.0.0.1:5000/),this will open the App on your browser.
 You can use the sample files for testing in `test_files` folder.
 
 ## Contributors
 
-**Aditya Kotkar** - [ADI-KOTKAR](https://github.com/ADI-KOTKAR)
-**Shreyas Khadapkar** - [shreyaskhadapkar](https://github.com/shreyaskhadapkar)
-**Praveenkumar Khatri** - [PraveenKhatri](https://github.com/PraveenKhatri)
+- **Aditya Kotkar** - [ADI-KOTKAR](https://github.com/ADI-KOTKAR)
+- **Shreyas Khadapkar** - [shreyaskhadapkar](https://github.com/shreyaskhadapkar)
+- **Praveenkumar Khatri** - [PraveenKhatri](https://github.com/PraveenKhatri)
 
 ## License
 
 - Project link: [My_Guard](https://github.com/ADI-KOTKAR/Stega)
-- [License](https://github.com/ADI-KOTKAR/My_Guard/blob/master/LICENSE)
+- [License](https://github.com/ADI-KOTKAR/Stega/blob/master/LICENSE)
 
 
