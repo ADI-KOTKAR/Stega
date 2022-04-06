@@ -37,5 +37,9 @@ app.register_blueprint(video, url_prefix="/video")
 def home():
     return render_template("home.html")
 
+@app.route("/working")
+def working():
+    return "All Working!!!!"
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
