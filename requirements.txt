@@ -1,3 +1,5 @@
+atomicwrites==1.4.0
+attrs==21.4.0
 certifi==2020.11.8
 charset-normalizer==2.0.12
 click==8.0.4
@@ -7,6 +9,7 @@ Cython==0.29.23
 Flask==2.0.3
 gensim==4.1.2
 idna==3.3
+iniconfig==1.1.1
 install==1.3.5
 itsdangerous==2.1.1
 Jinja2==3.0.3
@@ -14,10 +17,15 @@ MarkupSafe==2.1.1
 Naked==0.1.31
 numpy==1.22.3
 opencv-python==4.5.5.64
+packaging==21.3
 piexif==1.1.3
 Pillow==9.0.1
+pluggy==1.0.0
+py==1.11.0
 pycryptodome==3.14.1
 pylibscrypt==2.0.0
+pyparsing==3.0.7
+pytest==7.1.1
 PyYAML==6.0
 requests==2.27.1
 scipy==1.8.0
@@ -26,6 +34,7 @@ shellescape==3.8.1
 smart-open==5.2.1
 stegano==0.10.2
 stepic==0.5.0
+tomli==2.0.1
 urllib3==1.26.9
 voluptuous==0.12.2
 Wave==0.0.2
