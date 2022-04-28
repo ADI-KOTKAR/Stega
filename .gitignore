@@ -20,3 +20,5 @@ CNS
 # others
 .vscode
 modes/Video/ffmpeg
+project_review/encoded_images/*.png
+certificates/
