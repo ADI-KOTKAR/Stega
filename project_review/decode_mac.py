@@ -9,17 +9,19 @@ from Crypto.Util.Padding import unpad
 img_name = input(str("Enter encoded image name: "))
 im = Image.open(f"encoded_images/{img_name}.png")
 
-# Input Flip
-angle = str(input("Enter flip: ")).upper()
+# Input Rotational Angle
+angle = int(input("Enter angle: "))
 
 # Start Time
 start = time.time()
 
-# Set Flip
-if angle == "LR":
-    im1 = im.transpose(Image.FLIP_LEFT_RIGHT)
-elif angle == "TB":
-    im1 = im.transpose(Image.FLIP_TOP_BOTTOM)
+# Set Rotational Angle
+if angle == 90:
+    im1 = im.transpose(Image.ROTATE_90)
+elif angle == 180:
+    im1 = im.transpose(Image.ROTATE_180)
+elif angle == 270:
+    im1 = im.transpose(Image.ROTATE_270)
 else:
     im1 = im
 
@@ -28,12 +30,11 @@ key = b'mysecretpasswordmysecretpassword'
 iv = b'mysecretpassword'
 
 cipherString = stepic.decode(im1)
-print(cipherString)
 cipherBytes = bytes(cipherString[2:-1], encoding='utf-8')
 cipherBytes = cipherBytes.decode('unicode_escape').encode('latin1')
 cipher2 = AES.new(key, AES.MODE_CBC, iv)
 pt = unpad(cipher2.decrypt(cipherBytes), 16)
-print("Decode text:",pt.decode())
+print("Decoded text:",pt.decode())
 
 # HMAC Verification
 key = "abracadabra"

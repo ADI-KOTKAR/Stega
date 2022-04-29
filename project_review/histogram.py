@@ -6,8 +6,8 @@ from matplotlib import pyplot as plt
 
 src_base = cv.imread("test_images/sample_image.jpeg")
 src_test1 = cv.imread("test_images/encrypted_text_image.png")
-src_test2 = cv.imread("encoded_images/encoded_rotate.jpeg")
-src_test3 = cv.imread("encoded_images/encoded_flip.jpeg")
+src_test2 = cv.imread("encoded_images/encoded_rotate.png")
+src_test3 = cv.imread("encoded_images/encoded_flip.png")
 
 
 if src_base is None or src_test1 is None or src_test2 is None:
@@ -44,6 +44,7 @@ channels = [0, 1]
 hist_base = cv.calcHist([hsv_base], channels, None, histSize, ranges, accumulate=False)
 cv.normalize(hist_base, hist_base, alpha=0, beta=1, norm_type=cv.NORM_MINMAX)
 plt.plot(hist_base)
+plt.title("Histogram - Cover Image")
 plt.show()
 
 hist_half_down = cv.calcHist([hsv_half_down], channels, None, histSize, ranges, accumulate=False)
@@ -52,16 +53,19 @@ cv.normalize(hist_half_down, hist_half_down, alpha=0, beta=1, norm_type=cv.NORM_
 hist_test1 = cv.calcHist([hsv_test1], channels, None, histSize, ranges, accumulate=False)
 cv.normalize(hist_test1, hist_test1, alpha=0, beta=1, norm_type=cv.NORM_MINMAX)
 plt.plot(hist_test1)
+plt.title("Histogram - Traditional LSB Steganography Image")
 plt.show()
 
 hist_test2 = cv.calcHist([hsv_test2], channels, None, histSize, ranges, accumulate=False)
 cv.normalize(hist_test2, hist_test2, alpha=0, beta=1, norm_type=cv.NORM_MINMAX)
 plt.plot(hist_test2)
+plt.title("Histogram - Rotational LSB Steganography Image")
 plt.show()
 
 hist_test3 = cv.calcHist([hsv_test3], channels, None, histSize, ranges, accumulate=False)
 cv.normalize(hist_test3, hist_test3, alpha=0, beta=1, norm_type=cv.NORM_MINMAX)
 plt.plot(hist_test3)
+plt.title("Histogram - Flipping LSB Steganography Image")
 plt.show()
 ## [Calculate the histograms for the HSV images]
 

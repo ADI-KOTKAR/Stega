@@ -1,32 +1,15 @@
 import stepic
 from PIL import Image
 import time
-import string
-import random
+import hmac
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
-from Crypto.Random import get_random_bytes
-from Crypto.PublicKey import RSA
-from Crypto.Signature import pkcs1_15
-from Crypto.Hash import SHA256
 
-# Secret Message
+# Secret Message and key
 message = input("Enter your secret message: ")
+key= "abracadabra"
 
-# Key generation - Public/Private Keys
-key = RSA.generate(2048)
-
-private_key = key.export_key()
-f = open('certificates/private_key.pem', 'wb')
-f.write(private_key)
-f.close()
-
-public_key = key.export_key()
-f = open('certificates/public_key.pem', 'wb')
-f.write(public_key)
-f.close()
-
-# Cover Image
+# Cover Image and Compression
 im = Image.open("test_images/sample_image.jpeg")
 im.save("temp_images/temp.png",optimize=True,quality=60)
 im = Image.open("temp_images/temp.png")
@@ -34,18 +17,9 @@ im = Image.open("temp_images/temp.png")
 # Input Rotational Angle
 angle = int(input("Enter angle: "))
 
-# Digital Signature
-rndm_txt = ''.join(random.choices(string.ascii_uppercase+string.digits, k = 16))
-img_name = bytes(rndm_txt, encoding='utf-8')
-
-key = RSA.import_key(open('certificates/private_key.pem').read())
-hash = SHA256.new(img_name)
-signature = pkcs1_15.new(key).sign(hash)
-
-f = open('certificates/signature.pem', 'wb')
-f.write(signature)
-print(signature)
-f.close()
+# HMAC Digest
+hmac1 = hmac.new(key=key.encode(), msg=message.encode(), digestmod="sha1")
+message_digest1 = hmac1.hexdigest()
 
 # Start Time
 start = time.time()
@@ -72,7 +46,7 @@ enc = stepic.encode(im1, bytes(str(ct), encoding='utf-8'))
 enc.show()
 time.sleep(5)
 
-# Original Rottional Angle of Image
+# Original Orientation of Image
 if angle == 90:
     im2 = enc.transpose(Image.ROTATE_270)
 elif angle == 180:
@@ -83,8 +57,8 @@ else:
     im2 = enc 
 
 # Encoded Image
-im2.save(f"encoded_images/{rndm_txt}.png")
-print(f"Encoded image : {rndm_txt}.png")
+im2.save(f"encoded_images/{message_digest1}.png")
+print(f"Encoded image : {message_digest1}.png")
 
 # End Time
 end = time.time()
